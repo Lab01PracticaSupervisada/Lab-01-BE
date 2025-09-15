@@ -31,12 +31,14 @@
   },
   "homepage": "https://github.com/Lab01PracticaSupervisada/Lab-01-BE#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dependencies": "^0.0.1",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "@tsconfig/node22": "^22.0.2",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.4.0",
