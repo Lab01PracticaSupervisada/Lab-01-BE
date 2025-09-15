@@ -22,10 +22,11 @@ export const readJsonFile = (): Curso[] => {
     }  
 };
 
-export const writeJsonFile = (data: Curso): void => {
+export const writeJsonFile = (data: Curso[]): void => {
     try {
         fs.writeFileSync(jsonPath, JSON.stringify(data, null, 2), "utf-8");
     } catch (error) {
         console.error("Error writing JSON file:", error);
     }
 };
+

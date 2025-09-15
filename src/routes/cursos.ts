@@ -28,13 +28,18 @@ router.post('/', (req, res) => {
     if (!req.body || Object.keys(req.body).length === 0) {
         return res.status(400).json({ message: 'Bad Request: Body is missing or empty' });
     }
+    const cursos: Curso[] = readJsonFile();
     const nuevoCurso: Curso = req.body;
+
     const curso : Curso = {} as Curso
     curso["sigla"] = nuevoCurso.sigla
     curso["id"] = idCounter++
     curso["nombre"] = nuevoCurso.nombre
     curso["creditos"] = nuevoCurso.creditos
-    writeJsonFile(curso);
+
+    cursos.push(curso);
+    writeJsonFile(cursos);
+    
     res.status(201).json(curso);
 });
 
