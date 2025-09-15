@@ -6,9 +6,14 @@ const port = process.env.PORT ?? 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
-  console.log("Response sent");
+});
+
+app.get("/health", (req, res) => {
+  res.json({ok: true});
 });
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+export default app;

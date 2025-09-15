@@ -5,7 +5,7 @@ import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-config-prettier';
-import vitest from '@vitest/eslint-plugin';
+import jest from "eslint-plugin-jest";
 
 export default defineConfig(
   {
@@ -25,15 +25,11 @@ export default defineConfig(
   },
   perfectionist.configs['recommended-natural'],
   {
-    files: ['**/*.test.ts', '**/*.spec.ts'],
-    languageOptions: {
-      globals: {
-        ...vitest.environments.env.globals,
-      },
-    },
+    files: ["src/tests/**/*.{js,ts}"],
+    ...jest.configs["flat/recommended"],
     rules: {
-      ...vitest.configs.recommended.rules,
-      '@typescript-eslint/unbound-method': 'off',
+      ...jest.configs["flat/recommended"].rules,
+      "jest/prefer-expect-assertions": "off",
     },
   },
 );
