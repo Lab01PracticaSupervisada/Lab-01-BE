@@ -8,7 +8,7 @@ npx tsc --init
 
 npm i -D tsx
 
-npm i -D prettier
+npm i -D prettier eslint-config-prettier
 
 npm i -D eslint typescript-eslint @eslint/js eslint-plugin-perfectionist 
 
