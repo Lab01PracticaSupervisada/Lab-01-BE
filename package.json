@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/Lab01PracticaSupervisada/Lab-01-BE#readme",
   "dependencies": {
+    "dependencies": "^0.0.1",
     "express": "^5.1.0"
   },
   "devDependencies": {
