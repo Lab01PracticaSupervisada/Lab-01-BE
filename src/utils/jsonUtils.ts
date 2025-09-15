@@ -1,8 +1,8 @@
+import { Curso } from "#models/curso.js";
 import fs from "fs";
 import path from "path";
-import { Curso } from "#models/curso.js";
-import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 // Get the current file's path from import.meta.url
 const __filename = fileURLToPath(import.meta.url);
