@@ -3,7 +3,7 @@ import request from 'supertest';
 import app from '../index.js';
 import { cleanData } from '../utils/jsonUtils.js';
 
-describe('GET /health', () => {
+describe('API Endpoints', () => {
   cleanData();
 
   it('health check endpoint working', async () => {

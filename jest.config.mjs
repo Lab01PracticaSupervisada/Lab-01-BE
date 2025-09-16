@@ -1,13 +1,15 @@
 export default {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
+  extensionsToTreatAsEsm: ['.ts'],
   roots: ['./src/tests'],
   transform: {
     '^.+\\.ts?$': [
       'ts-jest',
       {
+        useESM: true,
         tsconfig: {
-          module: 'commonjs',
+          module: 'esnext',
         },
       },
     ],
