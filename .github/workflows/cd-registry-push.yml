@@ -44,13 +44,11 @@ jobs:
 
       # 4. Obtener credenciales de AKS
       - name: Get AKS credentials
-        run: | 
-          echo ${{ secrets.AKS_NAME }}
-          echo ${{ secrets.RESOURCE_GROUP }}
+        run: |
           az aks get-credentials \
-              --resource-group ${{ secrets.RESOURCE_GROUP }} \
-              --name ${{ secrets.AKS_NAME }} \
-              --overwrite-existing
+            --name ${{ secrets.AKS_NAME }} \
+            --overwrite-existing \
+            --resource-group ${{ secrets.RESOURCE_GROUP }}
 
       # 5. Desplegar en AKS
       - name: Deploy to AKS
