@@ -44,7 +44,10 @@ jobs:
 
       # 4. Obtener credenciales de AKS
       - name: Get AKS credentials
-        run: az aks get-credentials \
+        run: | 
+          echo ${{ secrets.AKS_NAME }}
+          echo ${{ secrets.RESOURCE_GROUP }}
+          az aks get-credentials \
               --resource-group ${{ secrets.RESOURCE_GROUP }} \
               --name ${{ secrets.AKS_NAME }} \
               --overwrite-existing
