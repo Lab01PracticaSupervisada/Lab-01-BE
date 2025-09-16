@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-be
+  labels:
+    app: lab-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab-be
+  template:
+    metadata:
+      labels:
+        app: lab-be
+    spec:
+      containers:
+        - name: lab-be
+          image: PLACEHOLDER_IMAGE
+          ports:
+            - containerPort: 3000
