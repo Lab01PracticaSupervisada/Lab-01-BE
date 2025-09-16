@@ -1,7 +1,7 @@
 import request from 'supertest';
 
-import app from '../index.js';
-import { cleanData } from '../utils/jsonUtils.js';
+import app from '../src/index.js';
+import { cleanData } from '../src/utils/jsonUtils.js';
 
 describe('API Endpoints', () => {
   cleanData();
