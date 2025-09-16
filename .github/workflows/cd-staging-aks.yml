@@ -53,9 +53,8 @@ jobs:
       # 5. Deploy to AKS
       - name: Deploy to AKS
         run: |
-          # En el manifiesto k8s/deployment.yaml
-          # la variable de la imagen es un placeholder
-          kubectl set image deployment/lab-be \
-            lab-be=${{ secrets.IMAGE_TAG }} \
-            --record
+          # Replace placeholder and apply manifests
+          sed "s|PLACEHOLDER_IMAGE|${{ env.IMAGE_TAG }}|" k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/ingress.yaml
           kubectl rollout status deployment/lab-be
