@@ -3,10 +3,10 @@ name: Azure OIDC Login
 on:
   workflow_dispatch: # para lanzarlo manualmente al principio
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 permissions:
-  id-token: write   # OBLIGATORIO para OIDC
+  id-token: write # OBLIGATORIO para OIDC
   contents: read
 
 jobs:

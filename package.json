@@ -12,8 +12,9 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --forceExit",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "imports": {
-    "#*": "./src/*"
-  },
   "bugs": {
     "url": "https://github.com/Lab01PracticaSupervisada/Lab-01-BE/issues"
   },

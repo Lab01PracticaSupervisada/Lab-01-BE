@@ -10,7 +10,7 @@ npm i -D tsx
 
 npm i -D prettier eslint-config-prettier
 
-npm i -D eslint typescript-eslint @eslint/js eslint-plugin-perfectionist 
+npm i -D eslint typescript-eslint @eslint/js eslint-plugin-perfectionist
 
 npm i -D jest ts-jest @types/jest ts-node
 

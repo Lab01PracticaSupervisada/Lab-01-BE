@@ -5,7 +5,7 @@ import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import perfectionist from 'eslint-plugin-perfectionist';
 import prettier from 'eslint-config-prettier';
-import jest from "eslint-plugin-jest";
+import jest from 'eslint-plugin-jest';
 
 export default defineConfig(
   {
@@ -25,11 +25,11 @@ export default defineConfig(
   },
   perfectionist.configs['recommended-natural'],
   {
-    files: ["src/tests/**/*.{js,ts}"],
-    ...jest.configs["flat/recommended"],
+    files: ['src/tests/**/*.{js,ts}'],
+    ...jest.configs['flat/recommended'],
     rules: {
-      ...jest.configs["flat/recommended"].rules,
-      "jest/prefer-expect-assertions": "off",
+      ...jest.configs['flat/recommended'].rules,
+      'jest/prefer-expect-assertions': 'off',
     },
   },
 );
