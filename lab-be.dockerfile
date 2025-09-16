@@ -16,6 +16,8 @@ WORKDIR /app
 
 # Copia node_modules del stage deps
 COPY --from=deps /app/node_modules ./node_modules
+# Copia los archivos de manifiesto
+COPY package*.json ./ 
 # Copia el resto del código 
 COPY tsconfig.json ./
 COPY src ./src
