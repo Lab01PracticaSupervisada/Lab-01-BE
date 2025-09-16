@@ -30,3 +30,10 @@ export const writeJsonFile = (data: Curso[]): void => {
     }
 };
 
+export const cleanData = (): void => {
+    try {
+        fs.writeFileSync(jsonPath, "[]", "utf-8");
+    } catch (error) {
+        console.error("Error cleaning JSON file:", error);
+    }
+};
