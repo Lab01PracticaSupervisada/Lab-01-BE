@@ -3,7 +3,7 @@ import path from 'path';
 
 import { Curso } from '../models/curso.js';
 
-const jsonPath = path.join(process.cwd(), 'src/data/data.json');
+const jsonPath = path.join(process.cwd(), 'data/data.json');
 
 export const readJsonFile = (): Curso[] => {
   try {

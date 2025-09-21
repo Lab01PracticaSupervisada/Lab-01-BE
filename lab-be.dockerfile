@@ -39,6 +39,9 @@ ENV PORT=3000
 COPY --from=build /app/dist ./dist
 COPY package*.json ./
 
+# Crea el directorio y archivo data.json
+RUN mkdir -p ./data && touch ./data/data.json && chown -R node:node ./data
+
 # Instala solo deps de producción
 RUN npm ci --omit=dev && npm cache clean --force
 
