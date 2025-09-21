@@ -25,6 +25,14 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    # 0.1. Login to Azure Container Registry
+      - name: Azure Container Registry login (OIDC)
+        run: |
+          TOKEN=$(az acr login --name ${{ secrets.ACR_NAME }} --expose-token --output tsv --query accessToken)
+          echo $TOKEN | docker login ${{ secrets.ACR_NAME }}.azurecr.io \
+            --username 00000000-0000-0000-0000-000000000000 \
+            --password-stdin
+
     # 1. Re-etiquetar la imagen probada
       - name: Re-tag production image
         run: |
