@@ -1,4 +1,4 @@
-name: CD Staging
+name: CD → Staging (AKS)
 
 on:
   push:

@@ -1,0 +1,52 @@
+name: CD → Production (ACA)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+    # 0. Login to Azure using OIDC
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    # 1. Re-etiquetar la imagen probada
+      - name: Re-tag production image
+        run: |
+          # Define la etiqueta de la imagen probada en staging
+          IMAGE_TAG_STAGING=${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}
+
+          # Define la etiqueta para producción
+          IMAGE_TAG_PROD=${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}-prod
+
+          # Usa docker pull y docker tag para re-etiquetar
+          az acr login --name ${{ secrets.ACR_NAME }}
+          docker pull $IMAGE_TAG_STAGING
+          docker tag $IMAGE_TAG_STAGING $IMAGE_TAG_PROD
+          docker push $IMAGE_TAG_PROD
+
+      # 2. Despliegue en Azure Container App
+      - name: Deploy to Azure Container App
+        run: |
+          # Actualiza la revisión de la Container App con la nueva imagen re-etiquetada
+          IMAGE_TAG_PROD=${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}-prod
+
+          az containerapp update \
+            --name lab01containerapp \
+            --resource-group DefaultResourceGroup-EUS \
+            --image $IMAGE_TAG_PROD      
