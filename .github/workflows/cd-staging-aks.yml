@@ -58,6 +58,10 @@ jobs:
             --overwrite-existing \
             --resource-group ${{ secrets.RESOURCE_GROUP }}
 
+      # Convert kubeconfig for OIDC
+      - name: Convert kubeconfig for OIDC
+        run: kubelogin convert-kubeconfig -l azurecli
+
       # 5. Deploy to AKS
       - name: Deploy to AKS
         run: |
