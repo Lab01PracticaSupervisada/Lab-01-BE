@@ -43,7 +43,6 @@ jobs:
           IMAGE_TAG_PROD=${{ secrets.ACR_NAME }}.azurecr.io/${{ secrets.IMAGE_NAME }}:${{ github.sha }}-prod
 
           # Usa docker pull y docker tag para re-etiquetar
-          az acr login --name ${{ secrets.ACR_NAME }}
           docker pull $IMAGE_TAG_STAGING
           docker tag $IMAGE_TAG_STAGING $IMAGE_TAG_PROD
           docker push $IMAGE_TAG_PROD
